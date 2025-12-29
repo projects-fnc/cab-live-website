@@ -1,40 +1,47 @@
 /* Landing Page Specific Styles - Optimized for Speed */
 
-/* About Company Compact Section - With Title */
+/* About Company Compact Section - With Title inside content */
 .about-compact {
     padding: 80px 0;
     background-color: var(--light);
-}
-
-.about-compact .section-title {
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.about-compact .section-title h2 {
-    font-size: 2.5rem;
-    color: var(--dark);
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
-}
-
-.about-compact .section-title h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background-color: var(--primary-yellow);
+    border-top: 3px solid var(--primary-yellow);
+    border-bottom: 3px solid var(--primary-yellow);
 }
 
 .about-compact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
-    align-items: center;
+    align-items: start;
+}
+
+.about-compact-text {
+    padding-top: 20px;
+}
+
+.about-compact-text .section-title {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.about-compact-text .section-title h2 {
+    font-size: 2.3rem;
+    color: var(--dark);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+.about-compact-text .section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-yellow);
+    transform: none;
 }
 
 .about-compact-text p {
@@ -50,6 +57,7 @@
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     border: 3px solid var(--primary-yellow);
+    margin-top: 20px;
 }
 
 .about-compact-image img {
@@ -123,13 +131,15 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 25px;
-    transition: var(--transition);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .service-card:hover .service-icon {
     background: var(--primary-yellow);
     color: var(--dark);
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(10deg);
 }
 
 .service-card h3 {
@@ -167,7 +177,7 @@
     transform: translateX(5px);
 }
 
-/* Why Choose Us Section */
+/* Why Choose Us Section - Fixed Icon Animations */
 .why-choose {
     padding: 80px 0;
     background-color: var(--light);
@@ -185,10 +195,11 @@
     padding: 35px 25px;
     border-radius: 12px;
     text-align: center;
-    transition: var(--transition);
+    transition: all 0.4s ease;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     border: 2px solid #f0f0f0;
     position: relative;
+    overflow: hidden;
 }
 
 .feature-card:hover {
@@ -209,19 +220,55 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 25px;
-    transition: var(--transition);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
 }
 
+/* Fixed hover animations - icons remain visible */
 .feature-card:hover .feature-icon {
     background: var(--primary-yellow);
     color: var(--dark);
-    transform: rotateY(180deg);
+    transform: scale(1.1);
+    animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+/* Icon pulse animation that keeps icon visible */
+@keyframes iconPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+/* Alternative simpler animation */
+.feature-card:hover .feature-icon i {
+    animation: iconSpin 0.6s ease;
+}
+
+@keyframes iconSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .feature-card h3 {
     font-size: 1.3rem;
     margin-bottom: 15px;
     color: var(--dark);
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover h3 {
+    color: var(--primary-yellow);
 }
 
 .feature-card p {
@@ -278,6 +325,11 @@
     font-size: 2.8rem;
     color: var(--primary-yellow);
     margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.cta-card:hover .cta-icon {
+    transform: scale(1.1);
 }
 
 .cta-card h3 {
@@ -355,6 +407,15 @@
         gap: 40px;
     }
     
+    .about-compact-text .section-title {
+        text-align: center;
+    }
+    
+    .about-compact-text .section-title h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
     .about-compact-text p {
         text-align: center;
     }
@@ -370,7 +431,7 @@
         margin-right: auto;
     }
     
-    .about-compact .section-title h2 {
+    .about-compact-text .section-title h2 {
         font-size: 2.2rem;
     }
 }
@@ -420,7 +481,7 @@
         font-size: 2rem;
     }
     
-    .about-compact .section-title h2 {
+    .about-compact-text .section-title h2 {
         font-size: 2rem;
     }
     
@@ -446,7 +507,7 @@
         font-size: 2.2rem;
     }
     
-    .about-compact .section-title h2 {
+    .about-compact-text .section-title h2 {
         font-size: 1.8rem;
     }
 }
